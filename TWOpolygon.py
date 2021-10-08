@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import geopandas
 from cartopy import crs as ccrs
 import cartopy.feature as cfeature
@@ -27,6 +28,8 @@ for key in cat_plot_colors.keys():
         ax.add_geometries(geometries['geometry'], crs = ccrs.PlateCarree(), facecolor = cat_plot_colors[key], edgecolor = 'black', alpha = 0.5)
 
 ax.set_title(label = 'National Hurricane Center Tropical Weather Outlook')
+
+
 ax.legend(cat_plot_colors)
 
 plt.savefig('TWO.png')

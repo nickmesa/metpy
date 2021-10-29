@@ -3,6 +3,9 @@ import matplotlib.patches as mpatches
 import geopandas
 from cartopy import crs as ccrs
 import cartopy.feature as cfeature
+from social import Twitter
+from account_args import account_info 
+from accounts import creds
 
 class Map:
 
@@ -41,4 +44,8 @@ new_map.title('National Hurricane Center Tropical Weather Outlook')
 
 new_map.savefig('TWO.png')
 
-new_map.showfig()
+tweet = Twitter(account_info())
+#tweet.tweet_text_only('Here is another tweet generated from a python script')
+img = tweet.twitter_media_upload('TWO.png')
+id = img.media_id
+tweet.tweet_text_and_media('NHC Tropical Weather Outlokk', id)
